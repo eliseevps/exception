@@ -1,3 +1,8 @@
+//Complete
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Трай с ресурсами
  * Для примера и упрощения, вам уже даны 2 класса имплементирующие интерфейс AutoCloseable
@@ -10,24 +15,31 @@
  * 2. Заменить вывод сообщений в консоль, на логирование уровня INFO
  */
 public class Main {
+    static Logger LOGGER = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
 
+        try (AutoCloseableResourcesFirst autoCloseableResourcesFirst = new AutoCloseableResourcesFirst(); AutoCloseableResourcesSecond autoCloseableResourcesSecond = new AutoCloseableResourcesSecond()){
+            autoCloseableResourcesFirst.doSomething();
+            autoCloseableResourcesSecond.doSomething();
+        } catch (Exception e) {
+            Main.LOGGER.log(Level.WARNING, "Ошибка при работе с ресурсами AutoCloseableResourcesFirst и/или AutoCloseableResourcesSecond");
+        }
     }
 }
 
 class AutoCloseableResourcesFirst implements AutoCloseable {
 
     public AutoCloseableResourcesFirst() {
-        System.out.println("Вызов конструктора -> AutoCloseableResources_First");
+        Main.LOGGER.log(Level.INFO, "Вызов конструктора -> AutoCloseableResources_First");
     }
 
     public void doSomething() {
-        System.out.println("Какой то метод -> AutoCloseableResources_First");
+        Main.LOGGER.log(Level.INFO, "Какой то метод -> AutoCloseableResources_First");
     }
 
     @Override
     public void close() throws Exception {
-        System.out.println("ЗАКРЫВАЕМ ресурс -> AutoCloseableResources_First");
+        Main.LOGGER.log(Level.INFO, "ЗАКРЫВАЕМ ресурс -> AutoCloseableResources_First");
     }
 }
 
@@ -35,15 +47,15 @@ class AutoCloseableResourcesFirst implements AutoCloseable {
 class AutoCloseableResourcesSecond implements AutoCloseable {
 
     public AutoCloseableResourcesSecond() {
-        System.out.println("Вызов конструктора -> AutoCloseableResources_Second");
+        Main.LOGGER.log(Level.INFO, "Вызов конструктора -> AutoCloseableResources_Second");
     }
 
     public void doSomething() {
-        System.out.println("Какой то метод -> AutoCloseableResources_Second");
+        Main.LOGGER.log(Level.INFO, "Какой то метод -> AutoCloseableResources_Second");
     }
 
     @Override
     public void close() throws Exception {
-        System.out.println("ЗАКРЫВАЕМ ресурс -> AutoCloseableResources_Second");
+        Main.LOGGER.log(Level.INFO, "ЗАКРЫВАЕМ ресурс -> AutoCloseableResources_Second");
     }
 }

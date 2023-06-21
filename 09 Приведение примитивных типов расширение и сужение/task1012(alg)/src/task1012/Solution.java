@@ -1,3 +1,5 @@
+//Complete
+
 package task1012;
 
 import java.io.BufferedReader;
@@ -29,6 +31,7 @@ Requirements:
 public class Solution {
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int count = 0;
 
         // Алфавит
         List<Character> alphabet = Arrays.asList(
@@ -44,6 +47,17 @@ public class Solution {
             list.add(line.toLowerCase());
         }
 
-        // напишите тут ваш код
+        for (char letter : alphabet) {
+            for (String s : list) {
+                char[] word = s.toCharArray();
+                for (Character ch : word) {
+                    if (ch.equals(letter)) {
+                        count++;
+                    }
+                }
+            }
+            System.out.println(letter + " " + count);
+            count = 0;
+        }
     }
 }

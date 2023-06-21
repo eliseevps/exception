@@ -1,3 +1,5 @@
+//Complete
+
 package task1019;
 
 import java.io.BufferedReader;
@@ -43,10 +45,19 @@ Requirements:
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Map<String, Integer> map = new HashMap<>();
 
-        int id = Integer.parseInt(reader.readLine());
-        String name = reader.readLine();
+        while (true) {
+            String str = reader.readLine();
+            if (str.equals("")) {
+                break;
+            } else {
+                map.put(reader.readLine(), Integer.parseInt(str));
+            }
+        }
 
-        System.out.println("Id=" + id + " Name=" + name);
+        for (Map.Entry<String, Integer> pair : map.entrySet()) {
+            System.out.println(pair.getValue() + " " + pair.getKey());
+        }
     }
 }

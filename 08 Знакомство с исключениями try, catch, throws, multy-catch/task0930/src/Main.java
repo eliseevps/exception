@@ -1,3 +1,5 @@
+//Complete
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,6 +11,17 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Logger LOGGER  = Logger.getLogger(Main.class.getName());
+
+        try {
+            LOGGER.log(Level.INFO, "Начало вызова метода throwException()");
+            throwException();
+        } catch (NumberFormatException e) {
+            LOGGER.log(Level.WARNING, "В методе ошибка - " + e.getClass().getSimpleName());
+        }
+    }
+
+    public static void throwException() {
+        throw new NumberFormatException();
     }
 }

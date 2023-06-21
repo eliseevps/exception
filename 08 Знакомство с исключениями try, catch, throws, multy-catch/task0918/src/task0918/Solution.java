@@ -1,3 +1,5 @@
+//Complete
+
 package task0918;
 
 /* 
@@ -15,20 +17,22 @@ Requirements:
 3. Два класса из четырех должны быть checked исключениями.
 4. Два класса из четырех должны быть unchecked исключениями.*/
 
+import java.io.FileNotFoundException;
+
 public class Solution {
     public static void main(String[] args) {
     }
 
-    static class MyException {
+    static class MyException extends NullPointerException {
     }
 
-    static class MyException2 {
+    static class MyException2 extends NumberFormatException {
     }
 
-    static class MyException3 {
+    static class MyException3 extends ClassNotFoundException {
     }
 
-    static class MyException4 {
+    static class MyException4 extends FileNotFoundException {
     }
 }
 

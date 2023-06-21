@@ -1,6 +1,9 @@
+//Complete
+
 package task0921;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,17 @@ public class Solution {
     }
 
     public static void readData() {
-        //напишите тут ваш код
+        List<Integer> listNumbers = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
+            while (true) {
+                listNumbers.add(Integer.parseInt(reader.readLine()));
+            }
+        } catch (NumberFormatException | IOException e) {
+            System.out.println("Введен текст вместо числа. Итоговый массив:");
+            for (Integer number : listNumbers) {
+                System.out.println(number);
+            }
+        }
     }
 }
